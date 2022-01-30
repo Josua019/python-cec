@@ -923,7 +923,7 @@ PyMODINIT_FUNC initcec(void) {
    CEC_config->clientVersion = CEC_CLIENT_VERSION_1_6_0;
 #endif
    CEC_config->bActivateSource = 0;
-   CEC_config->deviceTypes.Add(CEC_DEVICE_TYPE_RECORDING_DEVICE);
+   CEC_config->deviceTypes.Add(CEC_DEVICE_TYPE_AUDIO_SYSTEM);
 
 
    //  libcec callbacks
