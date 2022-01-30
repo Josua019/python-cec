@@ -1,21 +1,14 @@
 import time
 import cec
-from homeassistant_api import Client
 
-client = Client(
-    # Replace with your Home Assistant domain
-    'http://10.0.0.42:8123/api/',
-    # Create a long-lived access token from your profile page in HA
-    'YOURLONGLIVEDACCESSTOKENHERE'
-)
 # Replace as necessary with your own HA entity and services for volume
 entity_id='media_player.soundbar'
 def volume_up():
-    client.get_domains().media_player.services['volume_up'].trigger(entity_id=entity_id)
+    print("volume up")
 def volume_down():
-    client.get_domains().media_player.services['volume_down'].trigger(entity_id=entity_id)
+    print("volume down")
 def volume_mute():
-    client.get_domains().media_player.services['volume_mute'].trigger(entity_id=entity_id, is_volume_muted=True)
+    print("mute")
 
 def callback(event, *argv):
     if event == cec.EVENT_COMMAND:
@@ -29,13 +22,10 @@ def callback(event, *argv):
         print("keypress", code, duration)
         if code == 65 and duration == 0:
             volume_up()
-            print("volume up")
         elif code == 66 and duration == 0:
             volume_down()
-            print("volume down")
         elif code == 67 and duration == 0:
             volume_mute()            
-            print("mute")
     else:
         print("event", event, argv)
 
