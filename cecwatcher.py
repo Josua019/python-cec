@@ -43,7 +43,7 @@ def callback(event, *argv):
         print("event", event, argv)
         logging.info("event", event, argv)
 
-logging.basicConfig(filename='logcecwatcher.log', level=logging.INFO, format='%(asctime)s %(message)s')
+logging.basicConfig(filename='/home/pi/Documents/python-cec/logcecwatcher.log', level=logging.INFO, format='%(asctime)s %(message)s')
 
 cec.add_callback(callback, cec.EVENT_ALL & ~cec.EVENT_LOG)
 cec.init()
